@@ -56,15 +56,6 @@ object main{
 		println(remaining_vertices)
     }
 	*/
-	/*
-	//val data = Seq.fill(g_in.vertices.count().toInt)((g_in.vertices.collect, randomNumber(4)))
-	val vertex = g_in.vertices.map(out=>{(g_in.vertices.id.toLong, randomNumber(4))})
-	println("-----------------------------------------------------------------------")
-	println(vertex)
-	
-	val g = Graph[Int, Int](vertex, g_in.edges, edgeStorageLevel = StorageLevel.MEMORY_AND_DISK, vertexStorageLevel = StorageLevel.MEMORY_AND_DISK)
-	return g
-	*/
 	
 	val g = Graph.fromEdges[Int, Int](g_in.edges, randomNumber(4), edgeStorageLevel = StorageLevel.MEMORY_AND_DISK, vertexStorageLevel = StorageLevel.MEMORY_AND_DISK)
 	return g
