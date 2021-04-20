@@ -2,14 +2,15 @@ Robert Reiners
 Project 3  
 
 <h2>Question 1</h2>  
-|        Graph file       |           MIS file           | Is an MIS? |<br/>
-| ----------------------- | ---------------------------- | ---------- |<br/>
-| small_edges.csv         | small_edges_MIS.csv          | Yes        |<br/>
-| small_edges.csv         | small_edges_non_MIS.csv      | No         |<br/>
-| line_100_edges.csv      | line_100_MIS_test_1.csv      | Yes        |<br/>
-| line_100_edges.csv      | line_100_MIS_test_2.csv      | No         |<br/>
-| twitter_10000_edges.csv | twitter_10000_MIS_test_1.csv | Yes        |<br/>
-| twitter_10000_edges.csv | twitter_10000_MIS_test_2.csv | Yes        |<br/>
+  
+|        Graph file       |           MIS file           | Is an MIS? |
+| ----------------------- | ---------------------------- | ---------- |
+| small_edges.csv         | small_edges_MIS.csv          | Yes        |
+| small_edges.csv         | small_edges_non_MIS.csv      | No         |
+| line_100_edges.csv      | line_100_MIS_test_1.csv      | Yes        |
+| line_100_edges.csv      | line_100_MIS_test_2.csv      | No         |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_1.csv | Yes        |
+| twitter_10000_edges.csv | twitter_10000_MIS_test_2.csv | Yes        |
 
 <h2>Question 2</h2>  
 I was unable to get Luby's algorithm to work. I ran into problems trying to save the updated values to the graph for output. I have included my attempt commented out.  
