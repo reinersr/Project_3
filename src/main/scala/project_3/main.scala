@@ -16,15 +16,67 @@ object main{
   Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
   Logger.getLogger("org.spark-project").setLevel(Level.WARN)
 
-  def LubyMIS(g_in: Graph[Int, Int]): Graph[Int, Int] = {
-    while (remaining_vertices >= 1) {
-        // To Implement
-    }
+  def randomNumber(degree: Int): Int = {
+	val random = scala.util.Random
+	var num = random.nextInt((2*degree))
+	if(num != 2){
+		return 1	//0
+	} else {
+		return -1	//2
+	}
   }
 
+  def LubyMIS(g_in: Graph[Int, Int]): Graph[Int, Int] = {
+	/*
+    var M = g_in
+	var remaining_vertices = g_in.vertices.count
+	val random = scala.util.Random
+	while (remaining_vertices >= 1) {
+		var activeGraph = M.mapVertices((id,_) => randomNumber(4))
+		M = activeGraph
+		
+        for(vertex <- g_in.vertices.collect){
+			if(M.subgraph(vpred = (id, attr) => id==vertex._1) != null){
+				if(vertex._1==2){
+					for(x <- M.collectNeighbors(EdgeDirection.Out).collect){
+						//x = neighbor
+						if(x._2.length > 0 && x._2(0)._2 == 0){
+							println("run")
+							println(vertex)
+							//println(x)
+							var vertex._2 = 1;
+							var x._1 = -1;
+						}
+					}
+				}
+			}
+		}
+		M = g_in.subgraph(vpred = (id, attr) => attr == 0 || attr == 2)
+		remaining_vertices = M.vertices.count
+		println(remaining_vertices)
+    }
+	*/
+	/*
+	//val data = Seq.fill(g_in.vertices.count().toInt)((g_in.vertices.collect, randomNumber(4)))
+	val vertex = g_in.vertices.map(out=>{(g_in.vertices.id.toLong, randomNumber(4))})
+	println("-----------------------------------------------------------------------")
+	println(vertex)
+	
+	val g = Graph[Int, Int](vertex, g_in.edges, edgeStorageLevel = StorageLevel.MEMORY_AND_DISK, vertexStorageLevel = StorageLevel.MEMORY_AND_DISK)
+	return g
+	*/
+	
+	val g = Graph.fromEdges[Int, Int](g_in.edges, randomNumber(4), edgeStorageLevel = StorageLevel.MEMORY_AND_DISK, vertexStorageLevel = StorageLevel.MEMORY_AND_DISK)
+	return g
+  }
 
   def verifyMIS(g_in: Graph[Int, Int]): Boolean = {
-    // To Implement
+	for (triplet <- g_in.triplets.collect){
+		if (triplet.srcAttr == 1 && triplet.dstAttr == 1){
+			return false
+		}
+	}
+	return true
   }
 
 
